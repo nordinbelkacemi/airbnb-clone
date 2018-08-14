@@ -50,4 +50,3 @@ Kitchen.create!(
   capacity: 6,
   availability: true
 )
-
