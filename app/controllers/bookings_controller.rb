@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
   end
 
   def edit
-
+    if params['button_action'] == 'accept'
+    else
+    end
   end
 
   def update
