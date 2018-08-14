@@ -32,5 +32,4 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-
 end
