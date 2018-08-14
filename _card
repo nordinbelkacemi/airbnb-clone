@@ -1,0 +1,23 @@
+.cocktail-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 150px;
+  width: 250px;
+  margin: 20px 0px;
+  border-radius: 5px;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.new-cocktail-card {
+  height: 150px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed 2px rgba(0,0,0,0.5);
+  margin: 20px 0px;
+  padding: 0px 15px;
+  border-radius: 5px;
+}
