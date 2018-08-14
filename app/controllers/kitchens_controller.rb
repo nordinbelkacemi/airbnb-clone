@@ -1,4 +1,6 @@
 class KitchensController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  
   def index
     if params[:query].present?
       @query = params[:query]
@@ -31,13 +33,3 @@ class KitchensController < ApplicationController
 #     params.require(:kitchen).permit(:title, :address, :photo, :description, :amenities, :price, :rating, :capacity, :availability)
 #   end
 end
-
-
-
-
-
-
-
-
-
-
