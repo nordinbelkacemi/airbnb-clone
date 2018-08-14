@@ -1,6 +1,22 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+   username: "kojoa"
+    password: "oerjnfernrofn"
+    email: "kojo_addaquay@yahoo.com"
+    photo: "https://unsplash.com/photos/xMh_ww8HN_Q"
+)
+
 Kitchen.destroy_all
 
-Kitchen.create!(title: 'Light & Spacious Bright Kitchen London',
+Kitchen.create!(
+  title: 'Light & Spacious Bright Kitchen London',
   address: '10 Clifton Gardens London W9 1DT',
   photo: 'https://images.unsplash.com/photo-1525802498323-c8fbf69eb42f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72e2f65d2accdb6b2b17b00a7eb783d8&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb',
   description: 'A lovely summer feel for this spacious bright kitchen.',
@@ -10,6 +26,7 @@ Kitchen.create!(title: 'Light & Spacious Bright Kitchen London',
   capacity: 10,
   availability: true
 )
+
 Kitchen.create!(
   title: 'Stylish Kitchen Close to River Thames',
   address: '5 Queensmill Road London SW6 6JP',
@@ -19,14 +36,15 @@ Kitchen.create!(
   price: 65,
   rating: 4,
   capacity: 7,
-  availability: false
+  availabiliy: true
 )
+
 Kitchen.create!(
   title: 'Green Kitchen',
   address: 'Euston Rd London N1C 4QP',
   photo: 'https://images.unsplash.com/photo-1504524113458-1a56028c190c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e952db9557067636136e83196e11af1&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb',
   description: 'A small kitchen filled with plant.',
-  amenities: '  5 ovens, 2 fridges, and 6 cooking tables.',
+  amenities: '  5 ovens, 2 fridges, and 6 cooking tables.'
   price: 110,
   rating: 4,
   capacity: 6,
