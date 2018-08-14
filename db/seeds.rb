@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-   username: "kojoa",
-    password: "oerjnfernrofn",
-    email: "kojo_addaquay@yahoo.com",
-    photo: "https://unsplash.com/photos/xMh_ww8HN_Q",
+  username: "kojoa",
+  password: "oerjnfernrofn",
+  email: "kojo_addaquay@yahoo.com",
+  photo: "https://unsplash.com/photos/xMh_ww8HN_Q",
 )
 
 Kitchen.destroy_all
