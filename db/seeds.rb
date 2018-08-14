@@ -5,6 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+   username: "kojoa"
+    password: "oerjnfernrofn"
+    email: "kojo_addaquay@yahoo.com"
+    photo: "https://unsplash.com/photos/xMh_ww8HN_Q"
+)
+
 Kitchen.destroy_all
 
 Kitchen.create!(
@@ -28,7 +36,7 @@ Kitchen.create!(
   price: 65,
   rating: 4,
   capacity: 7,
-  availability: true
+  availabiliy: true
 )
 
 Kitchen.create!(
@@ -42,3 +50,4 @@ Kitchen.create!(
   capacity: 6,
   availability: true
 )
+

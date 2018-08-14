@@ -1,5 +1,4 @@
 class KitchensController < ApplicationController
-
   def index
     if params[:query].present?
       @query = params[:query]
