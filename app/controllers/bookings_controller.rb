@@ -1,7 +1,5 @@
 class BookingsController < ApplicationController
-<<<<<<< HEAD
   skip_before_action :authenticate_user!, only: [:index, :show]
-=======
   before_action :find_booking, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -35,6 +33,4 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-
->>>>>>> e000ff69fee93c8ca1f3d187f828bfd09c613b9d
 end
