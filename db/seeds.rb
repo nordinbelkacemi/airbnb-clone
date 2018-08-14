@@ -31,9 +31,10 @@ kitchens.each_with_index {|kitchen, i| Kitchen.create(
   title: Faker::Restaurant.unique.name,
   address: Faker::Address.unique.full_address,
   remote_photo_url: URLS[i],
-  description: 'A lovely summer feel for this spacious bright kitchen.',
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
   price: (rand * 1000).round(-1),
   capacity: (rand * 20).round,
   availability: rand < 0.5,
-  rating: (rand * 5).round
+  rating: (rand * 5),
+  amenities: "10 ovens, 3 fridges, 20 cooking stations"
 )}
