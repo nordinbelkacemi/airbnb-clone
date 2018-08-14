@@ -2,15 +2,19 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @booking = Booking.all
+    @bookings = Booking.all
+    @kitchen = Kitchen.all
   end
 
   def new
+    @kitchen = Kitchen.find(params[:kitchen_id])
     @booking = Booking.new
   end
 
   def create
-    @booking = Booking.new(params[:booking])
+    @booking = Booking.new(booking_params)
+    @kitchen = Kitchen.find(params[:kitchen_id])
+    @booking.kitchen = @kitchen
     @booking.save
   end
 
@@ -23,7 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(params[:booking])
+    @booking.update(booking_params)
   end
 
   def destroy
@@ -36,5 +40,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+  def booking_params
+    params.require(:booking).permit(:day)
+  end
 
 end

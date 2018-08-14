@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(
-   username: "kojoa"
-    password: "oerjnfernrofn"
-    email: "kojo_addaquay@yahoo.com"
-    photo: "https://unsplash.com/photos/xMh_ww8HN_Q"
-)
+# User.create!(
+#    username: "kojoa",
+#     password: "oerjnfernrofn"
+#     email: "kojo_addaquay@yahoo.com"
+#     photo: "https://unsplash.com/photos/xMh_ww8HN_Q"
+# )
 
 Kitchen.destroy_all
 
@@ -36,7 +36,7 @@ Kitchen.create!(
   price: 65,
   rating: 4,
   capacity: 7,
-  availabiliy: true
+  availability: true
 )
 
 Kitchen.create!(
@@ -44,10 +44,14 @@ Kitchen.create!(
   address: 'Euston Rd London N1C 4QP',
   photo: 'https://images.unsplash.com/photo-1504524113458-1a56028c190c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e952db9557067636136e83196e11af1&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb',
   description: 'A small kitchen filled with plant.',
-  amenities: '  5 ovens, 2 fridges, and 6 cooking tables.'
+  amenities: '  5 ovens, 2 fridges, and 6 cooking tables.',
   price: 110,
   rating: 4,
   capacity: 6,
   availability: true
 )
+
+# Booking.create!(
+#   day:
+#   )
 
