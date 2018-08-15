@@ -1,35 +1,64 @@
-class KitchensController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  
-  def index
-    if params[:query].present?
-      @query = params[:query]
-      @kitchens = Kitchen.where("title iLike '%#{params[:query]}%'")
-    else
-      @kitchens = Kitchen.all
-    end
+class BookingsController < ApplicationController
+
+  def new
+
+    @kitchen = Kitchen.find(params[:kitchen_id])
+
+    @booking = Booking.new
+
   end
 
-   def new
-     @kitchen = Kitchen.new
-   end
+  def create
 
-   def create
-     @kitchen = Kitchen.new(kitchen_params)
-     if @kitchen.save
-       redirect_to kitchens_path
-     else
-       render :new
-     end
+    @booking = Booking.new(booking_params)
+
+    @booking.save!
+
+    redirect_to kitchens_path
+
   end
 
-    def show
-       @kitchen = Kitchen.find(params[:id])
-    end
+  def show
 
-   private
+  end
 
-   def kitchen_params
-     params.require(:kitchen).permit(:title, :address, :photo, :description, :amenities, :price, :rating, :capacity, :availability)
-   end
+  def edit
+
+  end
+
+  def update
+
+    @booking.update(params[:booking])
+
+  end
+
+  def destroy
+
+    @booking.destroy
+
+  end
+
+  private
+
+  def booking_params
+
+    prms = params.require(:booking).permit("day(1i)", "day(2i)", "day(3i)")
+
+    date = DateTime.parse("#{prms['day(1i)']}/#{prms['day(2i)']}/#{prms['day(3i)']}")
+
+    return {
+
+      day: date,
+
+      user_id: current_user.id,
+
+      kitchen_id: params[:kitchen_id],
+
+      created_at: DateTime.now
+
+    }
+
+  end
+
 end
+

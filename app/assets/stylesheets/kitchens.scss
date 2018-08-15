@@ -2,3 +2,65 @@
   display: flex;
   justify-content: center;
 }
+
+.price {
+  color: rgba(0,0,0,0.8);
+  font-weight: bold;
+}
+
+.description {
+  h4 {
+    padding-bottom: 20px;
+    color: $gray;
+  }
+}
+
+.amenities {
+  h4 {
+    padding-bottom: 20px;
+    color: $gray;
+  }
+  padding-bottom: 25px;
+}
+
+.description {
+  h4 {
+    padding-bottom: 20px;
+    color: $gray;
+  }
+  padding-bottom: 25px;
+}
+
+.capacity {
+  h4 {
+    padding-bottom: 20px;
+    color: $gray;
+  }
+  padding-bottom: 25px;
+}
+
+.price-and-book {
+  padding: 8px;
+  padding: 10px 100px;
+  margin-top: 10px;
+  border-radius: 5px
+}
+
+.btn {
+  background-color: #8CD76E;
+  padding: 5px 25px;
+  color: white;
+  border-radius: 7px;
+}
+
+// .title {
+//   h1 {
+//     font-size: 24px !important;
+//     font-weight: bold !important;
+//   }
+// }
+
+.title-yo {
+  font-size: 24px;
+  font-weight: bold;
+}
