@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Kitchen.destroy_all
+User.destroy_all
 
 URLS = [
   "https://images.unsplash.com/photo-1505817368554-2165b1e42f85?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=07ad02c34d1c9d86a12330efe0dba592&auto=format&fit=crop&w=1735&q=80",
@@ -22,19 +23,27 @@ URLS = [
   "http://rosners.com/wp-content/uploads/2017/02/luxury-showroom-construction.jpg",
 ]
 
-kitchens = []
+user = User.create!(username: "Nordin", email: "belkaceminordin@gmail.com", password: "123456")
+
 12.times do
-  kitchens << Faker::Restaurant.unique.name
+  User.create!(
+    username: Faker::Name.male_first_name,
+    email: Faker::Internet.email,
+    password: "123456"
+  )
 end
 
-kitchens.each_with_index {|kitchen, i| Kitchen.create(
-  title: Faker::Restaurant.unique.name,
-  address: Faker::Address.unique.full_address,
-  remote_photo_url: URLS[i],
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-  price: (rand * 1000).round(-1),
-  capacity: (rand * 20).round,
-  availability: rand < 0.5,
-  rating: (rand * 5),
-  amenities: "10 ovens, 3 fridges, 20 cooking stations"
-)}
+12.times do |i|
+  Kitchen.create!(
+    title: Faker::Restaurant.unique.name,
+    address: Faker::Address.unique.full_address,
+    remote_photo_url: URLS[i],
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    price: (rand * 1000).round(-1),
+    capacity: (rand * 20).round,
+    availability: rand < 0.5,
+    rating: (rand * 5),
+    amenities: "10 ovens, 3 fridges, 20 cooking stations",
+    user: User.all[i]
+  )
+end

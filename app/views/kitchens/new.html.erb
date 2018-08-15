@@ -1,0 +1,11 @@
+<%= simple_form_for [@kitchen] do |f| %>
+  <%= f.input :title%>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.input :capacity %>
+  <%= f.input :amenities %>
+  <%= f.input :price %>
+  <%= f.submit "Create kitchen", class: "btn btn-primary" %>
+<% end %>
