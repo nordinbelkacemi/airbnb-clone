@@ -1,13 +1,14 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update, :destroy]
-
   def new
+    @kitchen = Kitchen.find(params[:kitchen_id])
     @booking = Booking.new
   end
 
   def create
-    @booking = Booking.new(params[:booking])
-    @booking.save
+    raise
+    @booking = Booking.new(booking_params)
+    @booking.save!
+    redirect_to kitchens_path
   end
 
   def show
@@ -28,8 +29,14 @@ class BookingsController < ApplicationController
 
   private
 
-  def find_booking
-    @booking = Booking.find(params[:id])
+  def booking_params
+    prms = params.require(:booking).permit("day(1i)", "day(2i)", "day(3i)")
+    date = DateTime.parse("#{prms['day(1i)']}/#{prms['day(2i)']}/#{prms['day(3i)']}")
+    return {
+      day: date,
+      user_id: current_user.id,
+      kitchen_id: kitchen_id,
+      created_at: DateTime.now
+    }
   end
-
 end
