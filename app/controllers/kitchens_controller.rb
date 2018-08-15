@@ -1,6 +1,6 @@
 class KitchensController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     if params[:query].present?
       @query = params[:query]
@@ -8,6 +8,10 @@ class KitchensController < ApplicationController
     else
       @kitchens = Kitchen.all
     end
+  end
+
+  def show
+    @kitchen = Kitchen.find(params[:id])
   end
 
   # def new
@@ -22,10 +26,6 @@ class KitchensController < ApplicationController
   #     render :new
   #   end
   # end
-
-  # # def show
-#   # #   @kitchen = Kitchen.find(params[:id])
-#   # end
 
 #   private
 
