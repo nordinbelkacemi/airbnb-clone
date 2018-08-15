@@ -2,7 +2,11 @@ class KitchensController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @kitchens = Kitchen.where.not(user_id: current_user.id)
+    if current_user == nil
+      @kitchens = Kitchen.all
+    else
+      @kitchens = Kitchen.where.not(user_id: current_user.id)
+    end
   end
 
   def show
