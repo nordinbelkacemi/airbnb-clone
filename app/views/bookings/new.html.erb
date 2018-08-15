@@ -1,4 +1,4 @@
-<%= simple_form_for [@booking] do |f| %>
+<%= simple_form_for [@kitchen, @booking] do |f| %>
   <%= f.input :day, :as => :date %>
   <%= f.submit "Book", class: "btn btn-primary" %>
 <% end %>

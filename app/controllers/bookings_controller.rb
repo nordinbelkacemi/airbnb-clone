@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    raise
     @booking = Booking.new(booking_params)
     @booking.save!
     redirect_to kitchens_path
@@ -35,7 +34,7 @@ class BookingsController < ApplicationController
     return {
       day: date,
       user_id: current_user.id,
-      kitchen_id: kitchen_id,
+      kitchen_id: params[:kitchen_id],
       created_at: DateTime.now
     }
   end
