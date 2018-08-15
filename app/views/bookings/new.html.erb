@@ -1,1 +1,4 @@
-<h1>New Booking</h1>
+<%= simple_form_for [@kitchen, @booking] do |f| %>
+  <%= f.input :day, :as => :date %>
+  <%= f.submit "Book", class: "btn btn-primary" %>
+<% end %>
