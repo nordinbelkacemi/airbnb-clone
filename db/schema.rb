@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_193323) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "day"
+    t.boolean "accepted"
     t.bigint "user_id"
     t.bigint "kitchen_id"
     t.datetime "created_at", null: false
