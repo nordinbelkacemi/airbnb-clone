@@ -1,52 +1,78 @@
-
-<% unless @bookings_in.empty? %>
-  <h3>The following bookings have come in:</h1>
-  <% @bookings_in.each do |booking|%>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-3">
-        <ul class="list-group">
-          <li class="list-group-item"><%= booking.day %></li>
-          <li class="list-group-item"><%= booking.kitchen.title %></li>
-          <li class="list-group-item"><%= booking.user.username %></li>
-        </ul>
-        <%= link_to "Accept", booking_path(booking, {status: true}), method: :patch %>
-        <%= link_to "Deny", booking_path(booking, {status: false}), method: :patch %>
-        <% if booking.accepted == nil %>
-          <%= "pending" %>
-        <% elsif booking.accepted == true %>
-          <%= "accepted" %>
-        <% elsif booking.accepted == false %>
-          <% "denied" %>
+<div class="bookings container">
+  <div class="col-xs-12 col-md-6">
+    <h1 id="title-yo">Bookings In</h1>
+    <div class="bookings-in">
+      <% if @bookings_in.nil? %>
+        Your kitchen doesn't have any bookings (yet).
+      <% else %>
+        <% @bookings_in.each do |booking|%>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.kitchen.photo -%>')">
+            <h2>
+              <%= "booking on:" + booking.kitchen.title %>
+            </h2>
+            <p>
+              <%= "from:" + booking.user.username %>
+              <%= booking.day %>
+            </p>
+          </div>
+          <%= link_to "Accept", booking_path(booking, {status: true}), method: :patch %>
+          <%= link_to "Deny", booking_path(booking, {status: false}), method: :patch %>
+          <% if booking.accepted == nil %>
+            <%= "pending" %>
+          <% elsif booking.accepted == true %>
+            <%= "accepted" %>
+          <% elsif booking.accepted == false %>
+            <% "denied" %>
+          <% end %>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
-  <% end %>
-<% end %>
 
-
-<h3>Your bookings:</h1>
-<% @bookings_out.each do |booking|%>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-3">
-      <ul class="list-group">
-        <li class="list-group-item"><%= booking.day %></li>
-        <li class="list-group-item"><%= booking.kitchen.title %></li>
-      </ul>
-      <%= link_to "Cancel", booking_path(booking),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-      <%= link_to "Change date", edit_booking_path(booking)%>
-      <% if booking.accepted == nil %>
-        <%= "pending" %>
-      <% elsif booking.accepted == true %>
-        <%= "accepted" %>
+  <div class="col-xs-12 col-md-6">
+    <h1 id="title-yo">Bookings Out</h1>
+    <div class="bookings-out">
+      <% if @bookings_out.nil? %>
+        You haven't booked any kitchens (yet).
       <% else %>
-        <% "denied" %>
+        <% @bookings_out.each do |booking|%>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://getwallpapers.com/wallpaper/full/3/3/5/584765.jpg');">
+            <div class="card-category">Pending</div>
+            <div class="card-description">
+              <h2><%= booking.kitchen.title %></h2>
+              <p><%= booking.day %></p>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <a class="card-link" href="#" ></a>
+          </div>
+          <%= link_to "Cancel", booking_path(booking),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+          <%= link_to "Change date", edit_booking_path(booking)%>
+          <% if booking.accepted == nil %>
+            <%= "pending" %>
+          <% elsif booking.accepted == true %>
+            <%= "accepted" %>
+          <% else %>
+            <% "denied" %>
+          <% end %>
+          <br>
+          <br>
+          <br>
+        <% end %>
       <% end %>
     </div>
   </div>
+
+  <div class="user-kitchens">
+    <h1 id="title-yo"> Your kitchens</h1>
+    <% if @user_kitchens.nil?%>
+      You don't have any kitchens.
+      <%= link_to "Share your kitchen", new_kitchen_path, class: "btn btn-primary" %>
+    <% else %>
+      <% @user_kitchens.each do |kitchen| %>
+        <%= kitchen.title %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-<% end %>
