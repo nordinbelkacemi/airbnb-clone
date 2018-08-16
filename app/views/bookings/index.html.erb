@@ -10,11 +10,21 @@
           <li class="list-group-item"><%= booking.kitchen.title %></li>
           <li class="list-group-item"><%= booking.user.username %></li>
         </ul>
+        <%= link_to "Accept", booking_path(booking, {status: true}), method: :patch %>
+        <%= link_to "Deny", booking_path(booking, {status: false}), method: :patch %>
+        <% if booking.accepted == nil %>
+          <%= "pending" %>
+        <% elsif booking.accepted == true %>
+          <%= "accepted" %>
+        <% elsif booking.accepted == false %>
+          <% "denied" %>
+        <% end %>
       </div>
     </div>
   </div>
   <% end %>
 <% end %>
+
 
 <h3>Your bookings:</h1>
 <% @bookings_out.each do |booking|%>
@@ -29,6 +39,13 @@
         method: :delete,
         data: { confirm: "Are you sure?" } %>
       <%= link_to "Change date", edit_booking_path(booking)%>
+      <% if booking.accepted == nil %>
+        <%= "pending" %>
+      <% elsif booking.accepted == true %>
+        <%= "accepted" %>
+      <% else %>
+        <% "denied" %>
+      <% end %>
     </div>
   </div>
 </div>

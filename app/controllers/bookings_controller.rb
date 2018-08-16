@@ -24,7 +24,13 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params_update)
+    if params[:status] == "true"
+      @booking.update(accepted: true)
+    elsif params[:status] == "false"
+      @booking.update(accepted: false)
+    else
+      @booking.update(booking_params_update)
+    end
     redirect_to bookings_path
   end
 
