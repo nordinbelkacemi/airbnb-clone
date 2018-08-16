@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings_out = current_user.bookings
+    @bookings_in = Booking.joins(:kitchen).where("kitchens.user_id = ?", current_user.id)
+  end
+
   def new
     @kitchen = Kitchen.find(params[:kitchen_id])
     @booking = Booking.new
@@ -11,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-
+    
   end
 
   def edit
@@ -39,4 +44,3 @@ class BookingsController < ApplicationController
     }
   end
 end
-

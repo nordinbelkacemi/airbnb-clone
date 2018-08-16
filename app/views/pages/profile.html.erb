@@ -1,17 +1,11 @@
-<div class="bookings">
-  <div class="bookings-in">
-    <% @bookings_in.each do |booking|%>
-      <%= "booking on:" + booking.kitchen.title %>
-      <%= "from:" + booking.user.username %>
-      <%= booking.day %>
-    <% end  %>
+<div class="profile-info">
+  <div class="welcome">
+    <%= "Welcome" + current_user.username %>
   </div>
-  <div class="bookings-out">
-    <% @bookings_out.each do |booking|%>
-      <%= "kitchen:" + booking.kitchen.title %>
-      <%= booking.day %>
-    <% end  %>
+  <div class="profile-picture">
+
   </div>
+  <%= link_to "Manage bookings", bookings_path %>
 </div>
 <div class="user-kitchens">
   <% @user_kitchens.each do |kitchen| %>
