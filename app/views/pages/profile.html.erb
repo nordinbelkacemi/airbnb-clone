@@ -1,6 +1,11 @@
 <div class="container margin-top-70">
+  <% if flash[:notice] %>
+  <div class="alert alert-danger  alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
   <div class="col-xs-12 col-md-6">
-      <!--    -->
     <h1 id="title-yo"><%= "Welcome " + current_user.username + "!" %></h1>
 
     <%= link_to "manage bookings", bookings_path %>
@@ -12,7 +17,7 @@
       <ul>
         <% @user_kitchens.each do |kitchen| %>
           <li>
-            <%= kitchen.title %>
+            <%= link_to "#{kitchen.title}", kitchen_path(kitchen) %>
             <%= link_to "Delete", kitchen_path(kitchen),
             method: :delete,
             data: { confirm: "Are you sure?" } %>

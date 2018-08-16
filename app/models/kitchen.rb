@@ -7,5 +7,9 @@ class Kitchen < ApplicationRecord
   def init
     self.rating ||= 0
   end
-  
+
+  def booked?
+    # check for current or future bookings only
+    self.bookings.count > 0
+  end
 end

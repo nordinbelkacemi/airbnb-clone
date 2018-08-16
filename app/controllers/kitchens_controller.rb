@@ -1,6 +1,6 @@
 class KitchensController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_kitchen, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if current_user == nil
@@ -27,14 +27,21 @@ class KitchensController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     @kitchen.update(kitchen_params_update)
-    redirect_to profile_path
+    redirect_to dashboard
   end
 
   def destroy
-    @kitchen.destroy
-    redirect_to profile_path
+    if @kitchen.booked?
+      redirect_to dashboard_path, notice: "Kitchen booked ! can't delete"
+    else
+      @kitchen.destroy
+      redirect_to dashboard_path
+    end
   end
 
   private
@@ -51,5 +58,9 @@ class KitchensController < ApplicationController
     prms[:user_id] = current_user.id
     prms[:updated_at] = DateTime.now
     return prms
+  end
+
+  def set_kitchen
+    @kitchen = Kitchen.find(params[:id])
   end
 end
