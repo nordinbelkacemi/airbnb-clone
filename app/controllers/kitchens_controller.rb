@@ -8,6 +8,14 @@ class KitchensController < ApplicationController
     else
       @kitchens = Kitchen.all
     end
+    @kitchens = Kitchen.where.not(latitude: nil, longitude: nil)
+    @markers = @kitchens.map do |kitchen|
+      {
+        lat: kitchen.latitude,
+        lng: kitchen.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show

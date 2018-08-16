@@ -7,6 +7,12 @@
           <div class="kitchen-title">
             <%= kitchen.title -%>
           </div>
+          <div
+            id="map"
+            style="width: 100%;
+            height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+          ></div>
           <div class="rating-stars">
             <ul class="list-inline">
               <% kitchen.rating.times do %>
