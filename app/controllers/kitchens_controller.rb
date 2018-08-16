@@ -32,7 +32,7 @@ class KitchensController < ApplicationController
 
   def update
     @kitchen.update(kitchen_params_update)
-    redirect_to dashboard
+    redirect_to dashboard_path
   end
 
   def destroy

@@ -24,11 +24,39 @@ URLS = [
   "http://rosners.com/wp-content/uploads/2017/02/luxury-showroom-construction.jpg",
 ]
 
-12.times do
+men = [
+  "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29a17c0d14e2ef6c46b93628fa033371&auto=format&fit=crop&w=800&q=60",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=99c6d2880c20cb72f29b5a9eba8ea898&auto=format&fit=crop&w=1500&q=80",
+  "https://images.unsplash.com/photo-1505503693641-1926193e8d57?ixlib=rb-0.3.5&s=25f883d188f83803e1b63d7a1ae9524a&auto=format&fit=crop&w=668&q=80",
+  "https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e49161057e12d6c453b0680c5781d6f6&auto=format&fit=crop&w=1500&q=80",
+  "https://images.unsplash.com/photo-1523477800337-966dbabe060b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=961ceeff865faaaaab16daa1a28cf9ec&auto=format&fit=crop&w=668&q=80",
+  "https://images.unsplash.com/photo-1489481039754-8701aeda983b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7e34fec062fa6127af3dfa03ca23d731&auto=format&fit=crop&w=1655&q=80",
+]
+
+women = [
+  "https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b807435a5bb4eeab2415bfc77311a7ec&auto=format&fit=crop&w=581&q=80",
+  "https://images.unsplash.com/photo-1476493279419-b785d41e38d8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4920987ab334960a4d39b9db70555ef5&auto=format&fit=crop&w=1500&q=80",
+  "https://images.unsplash.com/photo-1528228728175-149802236c04?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fddd9754258faafc68dcaf962c4d6152&auto=format&fit=crop&w=668&q=80",
+  "https://images.unsplash.com/photo-1495490140452-5a226aef25d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c97011af9022f43be45b8557dcc13b91&auto=format&fit=crop&w=1500&q=80",
+  "https://images.unsplash.com/photo-1492474408904-3083b7c63b07?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=21cb2a05a1f964086ee67271169a1280&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1478184096253-c2d96e9263c1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=750e5c819577f4e2dfca5958704c1c1b&auto=format&fit=crop&w=1502&q=80",
+]
+
+6.times do
   User.create!(
     username: Faker::Name.male_first_name,
     email: Faker::Internet.email,
-    password: "123456"
+    password: "123456",
+    remote_photo_url: men.sample
+  )
+end
+
+6.times do
+  User.create!(
+    username: Faker::Name.female_first_name,
+    email: Faker::Internet.email,
+    password: "123456",
+    remote_photo_url: women.sample
   )
 end
 
@@ -43,7 +71,7 @@ end
     availability: rand < 0.5,
     rating: (rand * 5),
     amenities: "10 ovens, 3 fridges, 20 cooking stations",
-    user: User.all[i]
+    user: User.all.shuffle[i]
   )
 end
 
