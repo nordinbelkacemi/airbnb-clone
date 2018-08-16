@@ -1,20 +1,59 @@
-<div class="bookings">
-  <div class="bookings-in">
-    <% @bookings_in.each do |booking|%>
-      <%= "booking on:" + booking.kitchen.title %>
-      <%= "from:" + booking.user.username %>
-      <%= booking.day %>
-    <% end  %>
-  </div>
-  <div class="bookings-out">
-    <% @bookings_out.each do |booking|%>
-      <%= "kitchen:" + booking.kitchen.title %>
-      <%= booking.day %>
-    <% end  %>
-  </div>
-</div>
-<div class="user-kitchens">
-  <% @user_kitchens.each do |kitchen| %>
-    <%= kitchen.title %>
-  <% end %>
-</div>
+
+  <div class="bookings container">
+    <div class="col-xs-12 col-md-6">
+       <h1 id="title-yo">Bookings In</h1>
+      <!-- Placeholder begins -->
+       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://getwallpapers.com/wallpaper/full/4/5/5/584853.jpg');">
+         <h2>
+           Fat Pizza
+         </h2>
+         <p>
+           12/09/2018
+           [placeholder]
+         </p>
+       </div>
+      <!-- Placeholder ends -->
+
+      <div class="bookings-in">
+        <% @bookings_in.each do |booking|%>
+
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://getwallpapers.com/wallpaper/full/4/5/5/584853.jpg');">
+            <h2>
+              <%= "booking on:" + booking.kitchen.title %>
+            </h2>
+            <p>
+              <%= "from:" + booking.user.username %>
+              <%= booking.day %>
+            </p>
+          </div>
+        <% end  %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <h1 id="title-yo">Bookings Out</h1>
+      <div class="bookings-out">
+        <% @bookings_out.each do |booking|%>
+
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://getwallpapers.com/wallpaper/full/3/3/5/584765.jpg');">
+                <div class="card-category">Pending</div>
+                <div class="card-description">
+                  <h2><%= booking.kitchen.title %></h2>
+                  <p><%= booking.day %></p>
+                </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <a class="card-link" href="#" ></a>
+          </div>
+            <br>
+            <br>
+            <br>
+        <% end  %>
+      </div>
+    </div>
+
+      <div class="user-kitchens">
+        <% @user_kitchens.each do |kitchen| %>
+          <%= kitchen.title %>
+        <% end %>
+      </div>
+    </div>
