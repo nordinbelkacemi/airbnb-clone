@@ -4,6 +4,16 @@
     <%= image_tag "logo.svg", height: 50 %>
   <% end %>
 
+   <div class="col-xs-5">
+        <%= form_tag kitchens_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find your dream kitchen"
+        %>
+      <% end %>
+    </div>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 

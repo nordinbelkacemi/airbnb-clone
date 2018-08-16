@@ -5,7 +5,6 @@
     <%= link_to 'Share Your Kitchen', new_kitchen_path, class: "btn btn-success btn-lg" %>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
     <% @kitchens.each do |kitchen| %>
@@ -23,6 +22,7 @@
             </ul>
           </div>
         </div>
+        <%= kitchen.amenities %>
       </div>
     <% end %>
   </div>
