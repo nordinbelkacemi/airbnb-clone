@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:edit, :update, :destroy]
+
   def index
     @bookings_out = current_user.bookings
     @bookings_in = Booking.joins(:kitchen).where("kitchens.user_id = ?", current_user.id)
@@ -16,19 +18,20 @@ class BookingsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
-
+    
   end
 
   def update
-    @booking.update(params[:booking])
+    # @booking.update(params[:booking])
   end
 
   def destroy
     @booking.destroy
+    redirect_to bookings_path
   end
 
   private
@@ -42,5 +45,9 @@ class BookingsController < ApplicationController
       kitchen_id: params[:kitchen_id],
       created_at: DateTime.now
     }
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
