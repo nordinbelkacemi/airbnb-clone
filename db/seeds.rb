@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Booking.destroy_all
 Kitchen.destroy_all
 User.destroy_all
 
@@ -22,8 +23,6 @@ URLS = [
   "http://1.bp.blogspot.com/_beVt6kxHNIM/TH7Y8BGcwMI/AAAAAAAAAB8/I8WI6Wx8ld0/s1600/100_0753.JPG",
   "http://rosners.com/wp-content/uploads/2017/02/luxury-showroom-construction.jpg",
 ]
-
-user = User.create!(username: "Nordin", email: "belkaceminordin@gmail.com", password: "123456")
 
 12.times do
   User.create!(
@@ -47,3 +46,5 @@ end
     user: User.all[i]
   )
 end
+
+User.create!(username: "Nordin", email: "belkaceminordin@gmail.com", password: "123456")

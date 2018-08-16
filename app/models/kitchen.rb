@@ -7,4 +7,5 @@ class Kitchen < ApplicationRecord
   def init
     self.rating ||= 0
   end
+  
 end
