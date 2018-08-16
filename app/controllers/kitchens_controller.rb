@@ -8,7 +8,6 @@ class KitchensController < ApplicationController
     else
       @kitchens = Kitchen.all
     end
-    @kitchens = Kitchen.where.not(latitude: nil, longitude: nil)
     @markers = @kitchens.map do |kitchen|
       {
         lat: kitchen.latitude,
@@ -20,6 +19,10 @@ class KitchensController < ApplicationController
 
   def show
     @kitchen = Kitchen.find(params[:id])
+    @marker = {
+    lat: @kitchen.latitude,
+    lng: @kitchen.longitude
+    }
   end
 
   # def new
