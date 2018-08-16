@@ -1,0 +1,20 @@
+<div class="bookings">
+  <div class="bookings-in">
+    <% @bookings_in.each do |booking|%>
+      <%= "booking on:" + booking.kitchen.title %>
+      <%= "from:" + booking.user.username %>
+      <%= booking.day %>
+    <% end  %>
+  </div>
+  <div class="bookings-out">
+    <% @bookings_out.each do |booking|%>
+      <%= "kitchen:" + booking.kitchen.title %>
+      <%= booking.day %>
+    <% end  %>
+  </div>
+</div>
+<div class="user-kitchens">
+  <% @user_kitchens.each do |kitchen| %>
+    <%= kitchen.title %>
+  <% end %>
+</div>

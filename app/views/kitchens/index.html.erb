@@ -5,16 +5,12 @@
     <%= link_to 'Share Your Kitchen', new_kitchen_path, class: "btn btn-success btn-lg" %>
   </div>
 </div>
-
-
-
 <div class="container">
   <div class="row">
     <% @kitchens.each do |kitchen| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="kitchen-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= cl_image_path kitchen.photo -%>')">
           <%= link_to '', kitchen_path(kitchen), class: "kitchen-link" %>
-
           <div class="kitchen-title">
             <%= kitchen.title %>
           </div>
@@ -26,7 +22,6 @@
             </ul>
           </div>
         </div>
-        <%= kitchen.amenities %>
         <%= kitchen.amenities %>
       </div>
     <% end %>
