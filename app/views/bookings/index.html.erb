@@ -68,6 +68,7 @@
     <h1 id="title-yo"> Your kitchens</h1>
     <% if @user_kitchens.nil?%>
       You don't have any kitchens.
+      <br>
       <%= link_to "Share your kitchen", new_kitchen_path, class: "btn btn-primary" %>
     <% else %>
       <% @user_kitchens.each do |kitchen| %>
