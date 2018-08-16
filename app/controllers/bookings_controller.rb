@@ -18,15 +18,14 @@ class BookingsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-    
   end
 
   def update
-    # @booking.update(params[:booking])
+    @booking.update(booking_params_update)
+    redirect_to bookings_path
   end
 
   def destroy
@@ -44,6 +43,15 @@ class BookingsController < ApplicationController
       user_id: current_user.id,
       kitchen_id: params[:kitchen_id],
       created_at: DateTime.now
+    }
+  end
+
+  def booking_params_update
+    prms = params.require(:booking).permit("day(1i)", "day(2i)", "day(3i)")
+    date = DateTime.parse("#{prms['day(1i)']}/#{prms['day(2i)']}/#{prms['day(3i)']}")
+    return {
+      day: date,
+      updated_at: DateTime.now
     }
   end
 

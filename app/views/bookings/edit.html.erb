@@ -1,1 +1,6 @@
-<h1>Edit booking</h1>
+<div class="date-update-form">
+  <%= simple_form_for [@booking] do |f| %>
+    <%= f.input :day, :as => :date %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  <% end %>
+</div>
