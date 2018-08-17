@@ -7,14 +7,15 @@
   repeat: none;
   height: 150px;
   width: 250px;
-  margin: 20px 0px;
+  margin: 10px 0px;
+  margin-top: 50px;
   border-radius: 5px;
   // border: 3px solid rgba(255,255,255,0);
 }
 
 .kitchen-title {
   position: absolute;
-  top: 80px;
+  top: 100px;
   left: 20px;
   font-family: 'Muli', sans-serif;
   font-size: 20px;
@@ -45,18 +46,18 @@ fa-star {
 }
 
 .rating-stars {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 10px;
-  color: #FD7E34;
+  margin-bottom:12px;
+  height: 8px;
+  color: #F5CF3E;
+  font-size: 12px;
 }
 
 .card-avatar {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 2px solid white;
 }
