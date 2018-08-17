@@ -3,9 +3,14 @@
   justify-content: center;
 }
 
+
 .price {
-  color: rgba(0,0,0,0.8);
+  color: #7D7D7D;
   font-weight: bold;
+  margin-top: 10px;
+  margin-right: 25px;
+
+
 }
 
 .description {
@@ -40,6 +45,9 @@
 }
 
 .price-and-book {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px;
   padding: 10px 100px;
   margin-top: 10px;
@@ -63,4 +71,20 @@
 .title-yo {
   font-size: 24px;
   font-weight: bold;
+}
+
+.booking-form {
+  align: center;
+}
+
+.orange-text {
+  color: #FA6828 !important;
+}
+
+.thinner {
+  font-weight:lighter;
+}
+
+.margin-top-70 {
+  margin-top: 70px;
 }
