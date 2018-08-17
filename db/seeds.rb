@@ -16,6 +16,20 @@ Booking.destroy_all
 Kitchen.destroy_all
 User.destroy_all
 
+bios = [
+  "General twitter fanatic. Subtly charming pop culture advocate. Internet trailblazer.",
+  "General creator. Thinker. Coffee guru. Social media junkie. Unapologetic alcohol maven.",
+  "Hardcore thinker. Hipster-friendly student. Certified writer. Typical problem solver. Musicaholic. Reader.",
+  "Avid coffee expert. Writer. Reader. Internet nerd. Pop culture guru. Tvaholic. Travel fan. Beer evangelist.",
+  "Beer advocate. Award-winning gamer. Amateur alcohol geek. Internet ninja. Hardcore thinker.",
+  "Amateur coffee guru. Alcohol trailblazer. Typical pop culture ninja. Foodaholic. Music fan. Total web geek. Twitter buff. Internet nerd.",
+  "Food trailblazer. Troublemaker. Zombie scholar. Devoted analyst. Twitter buff. General alcohol guru. Evil coffee lover.",
+  "Unapologetic tv aficionado. Extreme beer fan. Hipster-friendly twitter evangelist. Total writer.",
+  "Proud music fanatic. Infuriatingly humble pop culture specialist. Introvert. Internet expert. Organizer.",
+  "Infuriatingly humble music specialist. Alcohol aficionado. Coffee fanatic. Devoted food geek. Evil tv ninja. Zombie practitioner.",
+  "Incurable food fanatic. Tv enthusiast. Devoted zombie expert. Web fanatic. Analyst. Organizer. Proud communicator. Travel junkie."
+]
+
 URLS = [
   "https://images.unsplash.com/photo-1505817368554-2165b1e42f85?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=07ad02c34d1c9d86a12330efe0dba592&auto=format&fit=crop&w=1735&q=80",
   "https://images.unsplash.com/photo-1495979830471-67a0decaa1cc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fe28f0321eae46a53fe8cb6cbd07426c&auto=format&fit=crop&w=1707&q=80",
@@ -49,21 +63,25 @@ women = [
   "https://images.unsplash.com/photo-1478184096253-c2d96e9263c1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=750e5c819577f4e2dfca5958704c1c1b&auto=format&fit=crop&w=1502&q=80",
 ]
 
-6.times do
+6.times do |i|
   User.create!(
     username: Faker::Name.male_first_name,
     email: Faker::Internet.email,
     password: "123456",
-    remote_photo_url: men.sample
+    remote_photo_url: men.sample,
+    from: Faker::Address.country,
+    bio: bios[i]
   )
 end
 
-6.times do
+6.times do |i|
   User.create!(
     username: Faker::Name.female_first_name,
     email: Faker::Internet.email,
     password: "123456",
-    remote_photo_url: women.sample
+    remote_photo_url: women.sample,
+    from: Faker::Address.country,
+    bio: bios[6 + i]
   )
 end
 
