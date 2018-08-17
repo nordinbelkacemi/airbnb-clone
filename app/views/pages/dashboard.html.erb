@@ -29,9 +29,20 @@
     <div class="user-kitchens">
       <h1>Kitchens</h1>
       <ul>
-        <% @user_kitchens.each do |kitchen| %>
+        <% current_user.kitchens.each do |kitchen| %>
+        <div class="card margin-top-50" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=kitchen.photo %>')">
+          <h2 class="profile-headers card-description"><%= link_to "#{kitchen.title}", kitchen_path(kitchen), class: "profile-headers" %></h2>
+
+          <div class="rating-stars rating-stars-profile">
+            <ul class="list-inline">
+              <% kitchen.rating.times do %>
+                <li ><i class="fas fa-star"></i></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
           <li>
-            <%= link_to "#{kitchen.title}", kitchen_path(kitchen) %>
             <%= link_to "Delete", kitchen_path(kitchen),
             method: :delete,
             data: { confirm: "Are you sure?" } %>

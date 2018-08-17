@@ -30,3 +30,26 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.banner-avatar {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 250px;
+  right: 100px;
+  border-radius: 50%;
+}
+
+.banner-avatar {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 250px;
+  right: 100px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.banner-avatar:hover {
+  border: 1px solid #FF6464;
+}
