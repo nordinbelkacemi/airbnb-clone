@@ -1,4 +1,4 @@
-<div class="main-banner" style="background-image: linear-gradient(-225deg, rgba(252,75,82,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?ixlib=rb-0.3.5&s=5d75928313fe96ea335421979b96cd31&auto=format&fit=crop&w=1950&q=80');">
+<div class="main-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2) 500%), url('https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?ixlib=rb-0.3.5&s=5d75928313fe96ea335421979b96cd31&auto=format&fit=crop&w=1950&q=80');">
   <div class="banner-content">
     <h1>Dream Kitchens</h1>
     <p>The best kitchens in the world 🌍</p>
@@ -9,25 +9,23 @@
   <div class="row">
     <% @kitchens.each do |kitchen| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="kitchen-card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path kitchen.photo -%>')">
+        <div class="kitchen-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= cl_image_path kitchen.photo -%>')">
           <%= link_to '', kitchen_path(kitchen), class: "kitchen-link" %>
           <div class="avatar">
-            <%= link_to user_profile_path(kitchen.user) do %>
-              <%= cl_image_tag(kitchen.user.photo, width: 150, height: 150, crop: :thumb, gravity: :face, class: "card-avatar") %>
-            <% end %>
+            <%= cl_image_tag(kitchen.user.photo, width: 150, height: 150, crop: :thumb, gravity: :face, class: "card-avatar") %> %>
             <!-- <img src="../images/logo.svg" alt="nothing"> -->
           </div>
           <div class="kitchen-title">
             <%= kitchen.title %>
           </div>
-        </div>
-        <div class="rating-stars">
+          <div class="rating-stars">
             <ul class="list-inline">
               <% kitchen.rating.times do %>
                 <li><i class="fas fa-star"></i></li>
               <% end %>
             </ul>
           </div>
+        </div>
         <%= "Max Cap: " + kitchen.capacity.to_s %>
           <br>
         <div class="thinner">
@@ -36,4 +34,10 @@
       </div>
     <% end %>
   </div>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+  ></div>
 </div>
