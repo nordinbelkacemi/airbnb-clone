@@ -4,10 +4,17 @@ class KitchensController < ApplicationController
 
   def index
     if current_user == nil
-      @kitchens = Kitchen.all
+      @kitchens = Kitchen.all.where.not(latitude: nil, longitude: nil)
+
     else
-      @kitchens = Kitchen.where.not(user_id: current_user.id)
+      @kitchens = Kitchen.where.not(user_id: current_user.id, latitude: nil, longitude: nil)
+
+      #@hash = Gmaps4rails.build_markers(@kitchens) do |kitchen, marker|
+       # marker.lat kitchen.latitude
+      #  marker.lng kitchen.longitude
+      #end
     end
+
     @markers = @kitchens.map do |kitchen|
       {
         lat: kitchen.latitude,
