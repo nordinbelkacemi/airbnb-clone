@@ -9,6 +9,7 @@ gem 'rails', '5.2.1'
 gem 'redis'
 gem "geocoder"
 gem 'dotenv-rails', groups: [:development, :test]
+gem "gmaps4rails"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -18,6 +19,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem "coffee-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

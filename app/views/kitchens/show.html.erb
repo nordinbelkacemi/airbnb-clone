@@ -1,5 +1,10 @@
 <div class="banner" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 50%), url('<%= @kitchen.photo %>');">
 </div>
+<div
+<%= content_for(:title) do %>
+  Dream Kitchens - <%= @kitchen.title %>
+<% end %>
+></div>
 <div class="container">
   <div class="title-price-container">
     <div class="title">
@@ -8,6 +13,23 @@
     <div class="address">
       <h4>Address</h4>
       <%= @kitchen.address %>
+      <%= link_to 'Edit', edit_kitchen_path(@kitchen) %> |
+      <%= link_to 'Back', kitchens_path %>
+      <%= content_for(:after_js) do %>
+        <script>
+          $(document).ready(function() {
+            alert('Welcome to <%=j @kitchen.title %>');
+          });
+        <script>
+     <% end %>
+     <% content_for(:after_js) do%>
+      <%= javascript_tag do %>
+        $(document).ready(function(){
+          var coord = <%= raw @kitchen_coordinates %>;
+          alert('Kitchen coordinates are ' + coord,lat'+ ',' + coord.lng);
+        });
+      <% end %>
+    <% end %>
     </div>
     <div class="price-and-book">
       <div class="price">
@@ -36,6 +58,6 @@
     id="map"
     style="width: 100%;
     height: 600px;"
-    data-markers="<%= @marker.to_json %>"
+    data-markers="[<%= @marker.to_json %>]"
   ></div>
 </div>
