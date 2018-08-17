@@ -1,4 +1,4 @@
-<div class="bookings container">
+<div class="bookings container margin-top-70">
   <div class="col-xs-12 col-md-6">
     <h1 id="title-yo">Bookings In</h1>
     <div class="bookings-in">
@@ -62,17 +62,5 @@
         <% end %>
       <% end %>
     </div>
-  </div>
-  <div class="user-kitchens">
-    <h1 id="title-yo"> Your kitchens</h1>
-    <% if @user_kitchens.nil?%>
-      You don't have any kitchens.
-      <br>
-      <%= link_to "Share your kitchen", new_kitchen_path, class: "btn btn-primary" %>
-    <% else %>
-      <% @user_kitchens.each do |kitchen| %>
-        <%= kitchen.title %>
-      <% end %>
-    <% end %>
   </div>
 </div>

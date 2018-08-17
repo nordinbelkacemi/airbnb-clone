@@ -90,7 +90,7 @@ end
     title: Faker::Restaurant.unique.name,
     address: Faker::Address.unique.full_address,
     remote_photo_url: URLS[i],
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    description: Faker::Restaurant.description,
     price: (rand * 1000).round(-1),
     capacity: (rand * 20).round,
     availability: rand < 0.5,
@@ -104,4 +104,10 @@ User.create!(username: "Nordin",
   email: "belkaceminordin@gmail.com",
   password: "123456",
   remote_photo_url: "https://avatars3.githubusercontent.com/u/38872998?v=4"
+)
+
+User.create!(username: "celine",
+  email: "celine@gmail.com",
+  password: "123456",
+  remote_photo_url: "https://avatars2.githubusercontent.com/u/30133098?s=460&v=4"
 )
