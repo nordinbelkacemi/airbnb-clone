@@ -15,6 +15,3 @@ class Kitchen < ApplicationRecord
     self.bookings.count > 0
   end
 end
-
-
-

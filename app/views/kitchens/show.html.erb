@@ -1,4 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 50%), url('<%= @kitchen.photo %>');">
+  <%= link_to user_profile_path(@kitchen.user) do %>
+    <%= cl_image_tag(@kitchen.user.photo, width: 400, height: 400, crop: :thumb, gravity: :face, class: "banner-avatar") %>
+  <% end %>
 </div>
 <div
 <%= content_for(:title) do %>
@@ -13,8 +16,6 @@
     <div class="address">
       <h4>Address</h4>
       <%= @kitchen.address %>
-      <%= link_to 'Edit', edit_kitchen_path(@kitchen) %> |
-      <%= link_to 'Back', kitchens_path %>
       <%= content_for(:after_js) do %>
         <script>
           $(document).ready(function() {
