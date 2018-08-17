@@ -93,4 +93,8 @@ end
   )
 end
 
-User.create!(username: "Nordin", email: "belkaceminordin@gmail.com", password: "123456")
+User.create!(username: "Nordin",
+  email: "belkaceminordin@gmail.com",
+  password: "123456",
+  remote_photo_url: "https://avatars3.githubusercontent.com/u/38872998?v=4"
+)
