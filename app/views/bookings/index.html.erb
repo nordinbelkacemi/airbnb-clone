@@ -37,7 +37,15 @@
       <% else %>
         <% @bookings_out.each do |booking|%>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://getwallpapers.com/wallpaper/full/3/3/5/584765.jpg');">
-            <div class="card-category">Pending</div>
+            <div class="card-category">
+              <% if booking.accepted == nil %>
+                <%= "pending" %>
+              <% elsif booking.accepted == true %>
+                <%= "accepted" %>
+              <% else %>
+                <% "denied" %>
+              <% end %>
+            </div>
             <div class="card-description">
               <h2><%= booking.kitchen.title %></h2>
               <p><%= booking.day %></p>
@@ -45,17 +53,10 @@
             <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
             <a class="card-link" href="#" ></a>
           </div>
-          <%= link_to "Cancel", booking_path(booking),
+          <%= link_to "Cancel", booking_path(booking), class: "btn btn-danger", style: "margin-top: 10px",
             method: :delete,
             data: { confirm: "Are you sure?" } %>
-          <%= link_to "Change date", edit_booking_path(booking)%>
-          <% if booking.accepted == nil %>
-            <%= "pending" %>
-          <% elsif booking.accepted == true %>
-            <%= "accepted" %>
-          <% else %>
-            <% "denied" %>
-          <% end %>
+          <%= link_to "Change date", edit_booking_path(booking), class: "btn btn-success", style: "margin-top: 10px"%>
           <br>
           <br>
           <br>

@@ -69,8 +69,8 @@ women = [
     email: Faker::Internet.email,
     password: "123456",
     remote_photo_url: men.sample,
-#    from: Faker::Address.country,
-#    bio: bios[i]
+    from: Faker::Address.country,
+    bio: bios[i]
   )
 end
 
@@ -80,8 +80,8 @@ end
     email: Faker::Internet.email,
     password: "123456",
     remote_photo_url: women.sample,
-#    from: Faker::Address.country,
-#    bio: bios[6 + i]
+    from: Faker::Address.country,
+    bio: bios[6 + i]
   )
 end
 
