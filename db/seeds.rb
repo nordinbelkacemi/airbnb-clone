@@ -16,6 +16,16 @@ Booking.destroy_all
 Kitchen.destroy_all
 User.destroy_all
 
+coordinates = [[47.7510741, -120.7401385],
+ [40.0583238, -74.4056612],
+ [32.3546679, -89.3985283],
+ [41.0006005, -85.768597],
+ [43.7844397, -88.7878678],
+ [41.0402509, -74.5831879],
+ [37.4315734, -78.6568942],
+ [31.9685988, -99.9018131],
+ [41.9728673, -88.129215]]
+
 bios = [
   "General twitter fanatic. Subtly charming pop culture advocate. Internet trailblazer.",
   "General creator. Thinker. Coffee guru. Social media junkie. Unapologetic alcohol maven.",
@@ -96,7 +106,9 @@ end
     availability: rand < 0.5,
     rating: (rand * 5),
     amenities: "10 ovens, 3 fridges, 20 cooking stations",
-    user: User.all.shuffle[i]
+    user: User.all.shuffle[i],
+    latitude: coordinates.sample[0],
+    longitude: coordinates.sample[1]
   )
 end
 
